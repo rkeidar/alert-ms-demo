@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Source/AlertService/Alert.API/Alerts.API.csproj", "Source/AlertService/Alert.API/"]
-RUN dotnet restore "Source/AlertService/Alert.API/Alerts.API.csproj"
+COPY ["src/AlertService/Alert.API/Alerts.API.csproj", "src/AlertService/Alert.API/"]
+RUN dotnet restore "src/AlertService/Alert.API/Alerts.API.csproj"
 COPY . .
-WORKDIR "/src/Source/AlertService/Alert.API"
+WORKDIR "/src/AlertService/Alert.API"
 RUN dotnet build "Alerts.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
