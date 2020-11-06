@@ -9,11 +9,7 @@ WORKDIR /src
 COPY ["src/AlertService/Alert.API/Alerts.API.csproj", "src/AlertService/Alert.API/"]
 RUN dotnet restore "src/AlertService/Alert.API/Alerts.API.csproj"
 COPY . .
-WORKDIR "/src/AlertService/Alert.API"
-
-
-RUN echo "$pwd"
-RUN echo "$(ls)"
+WORKDIR "/src/src/AlertService/Alert.API"
 RUN dotnet build "Alerts.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
